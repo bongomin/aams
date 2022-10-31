@@ -17,8 +17,9 @@ export const useAssetstore = defineStore("counter", {
     counter: 0,
   }),
   getters: {
-    doubleCount: (state) => state.counter * 2,
-    allAssets: (state) => state.allAssets,
+    // doubleCount: (state) => state.counter * 2,
+    // allAssets: (state) => state.allAssets,
+    // assetLocations:(state)=> state.assetLocations
   },
   actions: {
     increment() {
@@ -37,7 +38,7 @@ export const useAssetstore = defineStore("counter", {
     fetchAssetLocation() {
       assetLocations()
         .then((data) => {
-          this.assetLocations = data;
+          this.assetLocations = data[1];
           return data[1]
         })
         .catch((error) => console.log(error));

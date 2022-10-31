@@ -11,7 +11,7 @@
           <div class="btn-sec text-right">
             <q-btn
               class="q-mr-md"
-              @click="AddAssets = true"
+              @click="AddLocation = true"
               outline
               color="primary"
               label="Add New Location"
@@ -19,7 +19,7 @@
             />
             <q-btn
               class="q-mr-md"
-              @click="AddAssets = true"
+              @click="AddBranch = true"
               outline
               color="primary"
               label="Add New Branch"
@@ -35,7 +35,7 @@
             />
             <q-btn
               class="q-mr-md"
-              @click="AddAssets = true"
+              @click="AddAssetsCategory = true"
               outline
               color="primary"
               label="Add Asset category"
@@ -45,6 +45,8 @@
         </div>
       </div>
       <!-- Assets Table -->
+      test here
+      {{ useAssets.assetLocations }}
       <AssetsTable></AssetsTable>
       <!-- Add assets Dialoque -->
       <q-dialog
@@ -156,6 +158,27 @@
               >
               </q-input> -->
               <q-input
+                label="Acquisition Details"
+                class="col-3 q-pa-xs"
+                v-model="assets.acquisitionDetails"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-3 q-pa-xs"
+                autogrow
+                label="Acquisition Cost"
+                v-model="assets.acquisitionCost"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+            </div>
+            <div class="row q-col-gutter-xs">
+              <q-input
                 class="col-3 q-pa-xs"
                 bg-color="white"
                 label="Acquisition Date"
@@ -184,27 +207,6 @@
                     </q-popup-proxy>
                   </q-icon>
                 </template>
-              </q-input>
-              <q-input
-                class="col-3 q-pa-xs"
-                autogrow
-                label="Acquisition Cost"
-                v-model="assets.acquisitionCost"
-                bg-color="white"
-                square
-                dense
-              >
-              </q-input>
-            </div>
-            <div class="row q-col-gutter-xs">
-              <q-input
-                label="Acquisition Details"
-                class="col-3 q-pa-xs"
-                v-model="assets.acquisitionDetails"
-                bg-color="white"
-                square
-                dense
-              >
               </q-input>
               <!-- <q-date v-model="model" mask="YYYY-MM-DD HH:mm" color="purple" /> -->
 
@@ -347,6 +349,246 @@
           </q-card-section>
         </q-card>
       </q-dialog>
+
+      <!-- Asset Category dialoque -->
+      <q-dialog
+        v-model="AddAssetsCategory"
+        persistent
+        transition-show="flip-down"
+        transition-hide="flip-up"
+      >
+        <q-card
+          style="max-width: 1500px; width: 1000px; height: 700px"
+          class="bg-primary text-white"
+        >
+          <q-bar style="height: 50px">
+            <q-icon style="font-size: 30px" name="category" />
+            <div>Add Assets Category</div>
+            <q-space />
+            <q-btn dense flat icon="close" v-close-popup>
+              <q-tooltip class="bg-white text-primary">Close</q-tooltip>
+            </q-btn>
+          </q-bar>
+          <q-card-section class="q-pt-none q-mt-md">
+            <div class="row q-col-gutter-xs">
+              <q-input
+                class="col-3 q-pa-xs"
+                label="Category Id"
+                v-model="category.assetCategoryId"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-3 q-pa-xs"
+                v-model="category.categoryName"
+                label="category Name"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-3 q-pa-xs"
+                v-model="category.description"
+                label="category Description"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-3 q-pa-xs"
+                v-model="category.effectiveLifeInYears"
+                label="effective Life In Years "
+                bg-color="white"
+                type="number"
+                step="1"
+                square
+                dense
+              >
+              </q-input>
+            </div>
+            <div class="row q-col-gutter-xs">
+              <q-input
+                label="Effective Life in Months"
+                class="col-3 q-pa-xs"
+                v-model="category.effectiveLifeInMonths"
+                bg-color="white"
+                type="number"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-3 q-pa-xs"
+                autogrow
+                label="Depreciation Method Code"
+                v-model="category.depreciationMethodCode"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-3 q-pa-xs"
+                autogrow
+                label="Created By"
+                v-model="category.createdBy"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+            </div>
+            <div class="row q-col-gutter-xs q-mt-md">
+              <q-btn
+                class="col-1 q-pa-xs q-mr-md"
+                color="white"
+                text-color="black"
+                label="Clear"
+              />
+              <q-btn
+                class="col-1 q-pa-xs"
+                @click="saveAsset"
+                color="default"
+                label="Save"
+              />
+            </div>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
+      <!-- end -->
+
+      <!-- Create Branch -->
+      <q-dialog
+        v-model="AddBranch"
+        persistent
+        transition-show="flip-down"
+        transition-hide="flip-up"
+      >
+        <q-card
+          style="max-width: 1500px; width: 1000px; height: 700px"
+          class="bg-primary text-white"
+        >
+          <q-bar style="height: 50px">
+            <q-icon style="font-size: 30px" name="house_siding" />
+            <div>Add Branch</div>
+            <q-space />
+            <q-btn dense flat icon="close" v-close-popup>
+              <q-tooltip class="bg-white text-primary">Close</q-tooltip>
+            </q-btn>
+          </q-bar>
+          <q-card-section class="q-pt-none q-mt-md">
+            <div class="row q-col-gutter-xs">
+              <q-input
+                class="col-4 q-pa-xs"
+                label="Branch Code"
+                v-model="branch.branchCode"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-4 q-pa-xs"
+                v-model="branch.branchName"
+                label="Branch Name"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-4 q-pa-xs"
+                v-model="branch.createdBy"
+                label="Created By"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+            </div>
+            <div class="row q-col-gutter-xs q-mt-md">
+              <q-space />
+              <q-btn
+                class="col-1 q-pa-xs q-mr-md"
+                color="white"
+                text-color="black"
+                label="Clear"
+              />
+              <q-btn
+                class="col-1 q-pa-xs"
+                @click="saveAsset"
+                color="default"
+                label="Save"
+              />
+            </div>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
+      <!-- end -->
+
+      <!-- Create Location -->
+      <q-dialog
+        v-model="AddLocation"
+        persistent
+        transition-show="flip-down"
+        transition-hide="flip-up"
+      >
+        <q-card
+          style="max-width: 1500px; width: 500px; height: 700px"
+          class="bg-primary text-white"
+        >
+          <q-bar style="height: 50px">
+            <q-icon style="font-size: 30px" name="location_on" />
+            <div>Add Location</div>
+            <q-space />
+            <q-btn dense flat icon="close" v-close-popup>
+              <q-tooltip class="bg-white text-primary">Close</q-tooltip>
+            </q-btn>
+          </q-bar>
+          <q-card-section class="q-pt-none q-mt-md">
+            <div class="row q-col-gutter-xs">
+              <q-input
+                class="col-6 q-pa-xs"
+                label="Branch Code"
+                v-model="newlocation.description"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+              <q-input
+                class="col-6 q-pa-xs"
+                v-model="newlocation.createdBy"
+                label="Branch Name"
+                bg-color="white"
+                square
+                dense
+              >
+              </q-input>
+            </div>
+            <div class="row q-col-gutter-xs q-mt-md">
+              <q-space />
+              <q-btn
+                class="col-2 q-pa-xs q-mr-md"
+                color="white"
+                text-color="black"
+                label="Clear"
+              />
+              <q-btn
+                class="col-2 q-pa-xs"
+                @click="saveAsset"
+                color="default"
+                label="Save"
+              />
+            </div>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
+      <!-- end -->
     </div>
   </q-page>
 </template>
@@ -377,6 +619,26 @@ export default defineComponent({
     useAssets.assetCategory();
     useAssets.listBankBranches();
     useAssets.fetchAssetLocation();
+    const category = reactive({
+      assetCategoryId: "",
+      categoryName: " ",
+      description: " ",
+      effectiveLifeInYears: "",
+      effectiveLifeInMonths: "",
+      depreciationMethodCode: " ",
+      createdBy: " ",
+    });
+
+    const newlocation = reactive({
+      description: "",
+      createdBy: "",
+    });
+
+    const branch = reactive({
+      branchCode: "",
+      branchName: "",
+      createdBy: "",
+    });
 
     const assets = reactive({
       assetCategoryId: "",
@@ -402,8 +664,15 @@ export default defineComponent({
     return {
       model: ref("2019-02-22 21:02"),
       AddAssets: ref(false),
+      AddAssetsCategory: ref(false),
+      AddBranch: ref(false),
+      AddLocation: ref(false),
       saveAsset,
       assets,
+      category,
+      branch,
+      newlocation,
+      
       model: ref(null),
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       location: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
