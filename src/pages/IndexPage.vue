@@ -346,6 +346,8 @@
               />
             </div>
           </q-card-section>
+          <q-separator class="q-mt-md q-mb-md"></q-separator>
+          <NewAssetsTable />
         </q-card>
       </q-dialog>
 
@@ -456,6 +458,8 @@
               />
             </div>
           </q-card-section>
+          <q-separator class="q-mt-md q-mb-md"></q-separator>
+          <AssetCategoriesTable />
         </q-card>
       </q-dialog>
       <!-- end -->
@@ -525,6 +529,8 @@
               />
             </div>
           </q-card-section>
+          <q-separator class="q-mt-md q-mb-md"></q-separator>
+          <BranchesTable />
         </q-card>
       </q-dialog>
       <!-- end -->
@@ -537,7 +543,7 @@
         transition-hide="flip-up"
       >
         <q-card
-          style="max-width: 1500px; width: 500px; height: 700px"
+         style="max-width: 1500px; width: 1000px; height: 700px"
           class="bg-primary text-white"
         >
           <q-bar style="height: 50px">
@@ -585,6 +591,8 @@
               />
             </div>
           </q-card-section>
+          <q-separator class="q-mt-md q-mb-md"></q-separator>
+          <LocationsTable />
         </q-card>
       </q-dialog>
       <!-- end -->
@@ -598,6 +606,10 @@ import { ref, reactive } from "vue";
 import monthpicker from "quasar-monthpicker";
 
 import AssetsTable from "src/components/AssetsTable.vue";
+import AssetCategoriesTable from "src/components/AssetCategoriesTable.vue";
+import NewAssetsTable from "src/components/NewAssetsTable.vue";
+import BranchesTable from "src/components/BranchesTable.vue";
+import LocationsTable from "src/components/LocationsTable.vue";
 
 // store registration
 import { useAssetstore } from "stores/assets";
@@ -608,6 +620,10 @@ export default defineComponent({
   components: {
     AssetsTable,
     monthpicker,
+    AssetCategoriesTable,
+    NewAssetsTable,
+    BranchesTable,
+    LocationsTable,
   },
 
   setup() {

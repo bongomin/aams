@@ -1,8 +1,9 @@
 <template>
-  <div id="q-app">
-    <div class="table-wrapper">
-      <div class="assets-header">All Assets</div>
-      <table class="fl-table">
+ <div id="q-app">
+    <div class="table-wrapper1">
+         <div class="table-wrapper">
+      <div class="assets-header"> New Added Assets</div>
+     <table class="fl-table">
         <thead>
           <tr>
             <th>assetId</th>
@@ -53,16 +54,27 @@
         </tbody>
       </table>
     </div>
+    </div>
+   
   </div>
 </template>
 <script setup>
+import AssetsTable from "src/components/AssetsTable.vue";
+
 // store registration
 import { useAssetstore } from "stores/assets";
 const useAssets = useAssetstore();
+
 </script>
 <style scoped>
+.table-wrapper1 {
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #fcfcfc;
+    height: 440px;
+}
 .assets-header {
-  padding: 10px;
+   padding: 10px;
   font-size: 19px;
   font-weight: bold;
 }
@@ -73,7 +85,8 @@ const useAssets = useAssetstore();
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
   width: 100%;
   width: 97.5%;
-  overflow-y: scroll;
+  overflow-Y: scroll;
+     color: black;
 }
 
 .fl-table {
@@ -125,8 +138,7 @@ const useAssets = useAssetstore();
     display: block;
     text-align: right;
     font-size: 11px;
-    color: white;
-    padding: 0 0 10px;
+   color: black;    padding: 0 0 10px;
   }
   .fl-table thead,
   .fl-table tbody,
@@ -155,6 +167,7 @@ const useAssets = useAssetstore();
     width: 120px;
     font-size: 13px;
     text-overflow: ellipsis;
+    color: black;
   }
   .fl-table thead th {
     text-align: left;

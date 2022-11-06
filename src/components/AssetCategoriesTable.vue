@@ -1,68 +1,59 @@
 <template>
-  <div id="q-app">
-    <div class="table-wrapper">
-      <div class="assets-header">All Assets</div>
+ <div id="q-app">
+    <div class="table-wrapper1">
+         <div class="table-wrapper">
+      <div class="assets-header">Asset Categories</div>
       <table class="fl-table">
         <thead>
           <tr>
-            <th>assetId</th>
             <th>assetCategoryId</th>
-            <th>inventoryNumber</th>
-            <th>assetDescription</th>
-            <th>branchCode</th>
-            <th>locationId</th>
-            <th>currenctAssetUser</th>
-            <th>acquisitionDate</th>
-            <th>acquisitionCost</th>
-            <th>acquisitionDetails</th>
-            <th>initialDepreciationMonth</th>
-            <th>depreciationMonths</th>
-            <th>lastDepreciationMonth</th>
-            <th>isDisposed</th>
-            <th>branchCode</th>
-            <th>locationId</th>
-            <th>currenctAssetUser</th>
-            <th>acquisitionDate</th>
-            <th>acquisitionCost</th>
-            <th>acquisitionDetails</th>
+            <th>categoryName</th>
+            <th>description</th>
+            <th>effectiveLifeInYears</th>
+            <th>effectiveLifeInMonths</th>
+            <th>depreciationMethodCode</th>
+            <th>createdOn</th>
+            <th>lastModifiedOn</th>
+            <th>lastModifiedBy</th>
+
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in useAssets.allAssets" :key="index">
-            <td>{{ item.assetId }}</td>
+          <tr v-for="(item, index) in useAssets.assetCategories" :key="index">
             <td>{{ item.assetCategoryId }}</td>
-            <td>{{ item.inventoryNumber }}</td>
-            <td>{{ item.assetDescription }}</td>
-            <td>{{ item.branchCode }}</td>
-            <td>{{ item.locationId }}</td>
-            <td>{{ item.currenctAssetUser }}</td>
-            <td>{{ item.acquisitionDate }}</td>
-            <td>{{ item.acquisitionCost }}</td>
-            <td>{{ item.acquisitionDetails }}</td>
-            <td>{{ item.initialDepreciationMonth }}</td>
-            <td>{{ item.depreciationMonths }}</td>
-            <td>{{ item.lastDepreciationMonth }}</td>
-            <td>{{ item.isDisposed }}</td>
-            <td>{{ item.branchCode }}</td>
-            <td>{{ item.locationId }}</td>
-            <td>{{ item.currenctAssetUser }}</td>
-            <td>{{ item.acquisitionDate }}</td>
-            <td>{{ item.acquisitionCost }}</td>
-            <td>{{ item.acquisitionDetails }}</td>
+            <td>{{ item.categoryName }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.effectiveLifeInYears }}</td>
+            <td>{{ item.effectiveLifeInMonths }}</td>
+            <td>{{ item.depreciationMethodCode }}</td>
+            <td>{{ item.createdOn }}</td>
+            <td>{{ item.lastModifiedOn }}</td>
+            <td>{{ item.lastModifiedBy }}</td>
           </tr>
         </tbody>
       </table>
     </div>
+    </div>
+   
   </div>
 </template>
 <script setup>
+import AssetsTable from "src/components/AssetsTable.vue";
+
 // store registration
 import { useAssetstore } from "stores/assets";
 const useAssets = useAssetstore();
+
 </script>
 <style scoped>
+.table-wrapper1 {
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #fcfcfc;
+    height: 440px;
+}
 .assets-header {
-  padding: 10px;
+   padding: 10px;
   font-size: 19px;
   font-weight: bold;
 }
@@ -73,7 +64,8 @@ const useAssets = useAssetstore();
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
   width: 100%;
   width: 97.5%;
-  overflow-y: scroll;
+  overflow-Y: scroll;
+     color: black;
 }
 
 .fl-table {
@@ -125,8 +117,7 @@ const useAssets = useAssetstore();
     display: block;
     text-align: right;
     font-size: 11px;
-    color: white;
-    padding: 0 0 10px;
+   color: black;    padding: 0 0 10px;
   }
   .fl-table thead,
   .fl-table tbody,
@@ -155,6 +146,7 @@ const useAssets = useAssetstore();
     width: 120px;
     font-size: 13px;
     text-overflow: ellipsis;
+    color: black;
   }
   .fl-table thead th {
     text-align: left;
