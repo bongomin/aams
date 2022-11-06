@@ -45,8 +45,7 @@
         </div>
       </div>
       <!-- Assets Table -->
-      test here
-      {{ useAssets.assetLocations }}
+      <!-- {{ useAssets.assetLocations }} -->
       <AssetsTable></AssetsTable>
       <!-- Add assets Dialoque -->
       <q-dialog
@@ -672,7 +671,7 @@ export default defineComponent({
       category,
       branch,
       newlocation,
-      
+
       model: ref(null),
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
       location: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
