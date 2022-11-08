@@ -11,22 +11,6 @@
           <div class="btn-sec text-right">
             <q-btn
               class="q-mr-md"
-              @click="AddLocation = true"
-              outline
-              style="color:#459755"
-              label="Add New Location"
-              icon="location_on"
-            />
-            <q-btn
-              class="q-mr-md"
-              @click="AddBranch = true"
-              outline
-              style="color:#459755"
-              label="Add New Branch"
-              icon="house_siding"
-            />
-            <q-btn
-              class="q-mr-md"
               @click="AddAssets = true"
               outline
                style="color:#459755"
