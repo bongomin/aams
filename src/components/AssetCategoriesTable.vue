@@ -6,15 +6,15 @@
       <table class="fl-table">
         <thead>
           <tr>
-            <th>assetCategoryId</th>
-            <th>categoryName</th>
-            <th>description</th>
-            <th>effectiveLifeInYears</th>
-            <th>effectiveLifeInMonths</th>
-            <th>depreciationMethodCode</th>
-            <th>createdOn</th>
-            <th>lastModifiedOn</th>
-            <th>lastModifiedBy</th>
+            <th>Asset Category Id</th>
+            <th>Category Name</th>
+            <th>Description</th>
+            <th>Effective Life</th>
+            <th>Effective Life Months</th>
+            <th>Depreciation Method Code</th>
+            <th>Created</th>
+            <th>Last Modified</th>
+            <th>Last Modified By</th>
 
           </tr>
         </thead>

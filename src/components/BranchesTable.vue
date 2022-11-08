@@ -6,11 +6,11 @@
       <table class="fl-table">
         <thead>
           <tr>
-            <th>branchCode</th>
-            <th>branchName</th>
-            <th>createdOn</th>
-            <th>lastModifiedOn</th>
-            <th>lastModifiedBy</th>
+            <th>Branch Code</th>
+            <th>Branch Name</th>
+            <th>Created</th>
+            <th>Last Modified</th>
+            <th>Last Modified By</th>
           </tr>
         </thead>
         <tbody>

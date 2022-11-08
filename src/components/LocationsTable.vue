@@ -6,11 +6,11 @@
       <table class="fl-table">
         <thead>
           <tr>
-            <th>locationId</th>
-            <th>description</th>
-            <th>createdOn</th>
-            <th>lastModifiedOn</th>
-            <th>lastModifiedBy</th>
+            <th>Location Id</th>
+            <th>Description</th>
+            <th>Created</th>
+            <th>last Modified On</th>
+            <th>Last Modified By</th>
           </tr>
         </thead>
         <tbody>

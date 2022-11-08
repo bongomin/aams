@@ -5,26 +5,26 @@
       <table class="fl-table">
         <thead>
           <tr>
-            <th>assetId</th>
+            <th>Asset Id</th>
             <th>assetCategoryId</th>
-            <th>inventoryNumber</th>
-            <th>assetDescription</th>
-            <th>branchCode</th>
-            <th>locationId</th>
-            <th>currenctAssetUser</th>
-            <th>acquisitionDate</th>
-            <th>acquisitionCost</th>
-            <th>acquisitionDetails</th>
-            <th>initialDepreciationMonth</th>
-            <th>depreciationMonths</th>
-            <th>lastDepreciationMonth</th>
-            <th>isDisposed</th>
-            <th>branchCode</th>
-            <th>locationId</th>
-            <th>currenctAssetUser</th>
-            <th>acquisitionDate</th>
-            <th>acquisitionCost</th>
-            <th>acquisitionDetails</th>
+            <th>Inventory Number</th>
+            <th>Asset Description</th>
+            <th>Branch Code</th>
+            <th>Location Id</th>
+            <th>Currenct Asset User</th>
+            <th>Acquisition Date</th>
+            <th>Acquisition Cost</th>
+            <th>Acquisition Details</th>
+            <th>Initial Depreciation Month</th>
+            <th>Depreciation Months</th>
+            <th>Last Depreciation Month</th>
+            <th>Disposed</th>
+            <th>Branch Code</th>
+            <th>Location Id</th>
+            <th>Currenct Asset User</th>
+            <th>Acquisition Date</th>
+            <th>Acquisition Cost</th>
+            <th>Acquisition Details</th>
           </tr>
         </thead>
         <tbody>
