@@ -84,12 +84,12 @@ const useAssets = useAssetstore();
 
 .fl-table thead th {
   color: #ffffff;
-  background: #1a76d2;
+  background: #459755;
 }
 
 .fl-table thead th:nth-child(odd) {
   color: #ffffff;
-  background: #1a76d2;
+  background: #459755;
 }
 
 .fl-table tr:nth-child(even) {

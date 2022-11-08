@@ -13,7 +13,7 @@
               class="q-mr-md"
               @click="AddLocation = true"
               outline
-              color="primary"
+              style="color:#459755"
               label="Add New Location"
               icon="location_on"
             />
@@ -21,7 +21,7 @@
               class="q-mr-md"
               @click="AddBranch = true"
               outline
-              color="primary"
+              style="color:#459755"
               label="Add New Branch"
               icon="house_siding"
             />
@@ -29,7 +29,7 @@
               class="q-mr-md"
               @click="AddAssets = true"
               outline
-              color="primary"
+               style="color:#459755"
               label="Add New Asset"
               icon="add"
             />
@@ -37,7 +37,7 @@
               class="q-mr-md"
               @click="AddAssetsCategory = true"
               outline
-              color="primary"
+               style="color:#459755"
               label="Add Asset category"
               icon="category"
             />
@@ -698,6 +698,9 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+.bg-primary {
+  background: #459755 !important;
+}
 .assets-wrapper {
   margin-top: 10px;
   margin: 5px;

@@ -3,7 +3,7 @@
     <div class="column">
       <div class="row text-center">
         <div class="app-label text-center">
-          <p class="text-h5 text-center text-primary q-my-md" style="margin-left: 102px;">AMMS - APP</p>
+          <p class="text-h5 text-center  q-my-md" style="margin-left: 102px; color:green">AMMS - APP</p>
         </div>
         
       </div>
@@ -16,7 +16,7 @@
             </q-form>
           </q-card-section>
           <q-card-actions class="q-px-md">
-            <q-btn unelevated color="primary" size="lg" class="full-width" @click="authenticate" label="Login" />
+            <q-btn unelevated color="green" size="lg" class="full-width" @click="authenticate" label="Login" />
           </q-card-actions>
           <q-card-section class="text-center q-pa-none">
             <p class="text-grey-6">Not reigistered? Created an Account</p>

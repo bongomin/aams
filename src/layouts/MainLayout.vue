@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated  style="background:#459755">
       <q-toolbar>
         <q-btn
           flat
@@ -61,6 +61,11 @@ const linksList = [
   {
     title: "Users",
     icon: "people",
+    path:"/users"
+  },
+    {
+    title: "Reports",
+    icon: "reports",
     path:"/users"
   },
 ];
