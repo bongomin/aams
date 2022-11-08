@@ -673,8 +673,8 @@ export default defineComponent({
       newlocation,
 
       model: ref(null),
-      options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
-      location: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
+      options: ["Kampala", "Jinja", "Gulu", "Arua", "Mbale"],
+      location: ["Kampala", "Jinja", "Gulu", "Arua", "Mbale"],
 
       useAssets,
     };
