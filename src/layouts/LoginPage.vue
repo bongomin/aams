@@ -20,9 +20,9 @@
               <q-input
                 square
                 clearable
-                v-model="email"
-                type="email"
-                label="email"
+                v-model="username"
+                type="username"
+                label="user name"
               />
               <q-input
                 square
@@ -43,7 +43,7 @@
             />
           </q-card-actions>
           <q-card-section class="text-center q-pa-none">
-            <p class="text-grey-6">Not reigistered? Created an Account</p>
+            <p class="text-grey-6">Not reigistered? See the Systems admin</p>
           </q-card-section>
         </q-card>
       </div>
@@ -53,18 +53,30 @@
 
 <script>
 import { useRouter, useRoute } from "vue-router";
+import { useQuasar } from 'quasar'
+
 
 export default {
   name: "Login",
 
   data() {
     const router = useRouter();
+    const $q = useQuasar()
 
     const authenticate = () => {
+      console.log( $q.loading)
+
+      //   if(username.value !== 'daniel' && password.value !== 'qwerty') {
+      //   $q.notify({
+      //     message: 'Jim pinged you.',
+      //     color: 'purple'
+      //   })
+
+      // }
       router.push("/home");
     };
     return {
-      email: "",
+      username: "",
       password: "",
       authenticate,
     };
