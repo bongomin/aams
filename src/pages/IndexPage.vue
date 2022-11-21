@@ -13,7 +13,7 @@
               class="q-mr-md"
               @click="AddAssets = true"
               outline
-               style="color:#459755"
+              style="color: #459755"
               label="Add New Asset"
               icon="add"
             />
@@ -21,7 +21,7 @@
               class="q-mr-md"
               @click="AddAssetsCategory = true"
               outline
-               style="color:#459755"
+              style="color: #459755"
               label="Add Asset category"
               icon="category"
             />
@@ -60,7 +60,7 @@
 
           <q-card-section class="q-pt-none q-mt-md">
             <div class="row q-col-gutter-xs">
-              <q-input
+              <!-- <q-input
                 class="col-3 q-pa-xs"
                 label="Asset Category Id"
                 v-model="assets.assetCategoryId"
@@ -68,9 +68,28 @@
                 square
                 dense
               >
+              </q-input> -->
+              <q-select
+                class="col-3 q-pa-xs"
+                outlined
+                v-model="assets.assetCategoryId"
+                :options="useAssets.assetCategories.map(foo=>foo.assetCategoryId)"
+                label="Asset Category"
+                bg-color="white"
+                square
+                dense
+              />
+                <q-input
+                class="col-3 q-pa-xs"
+                v-model="assets.InventoryNumber"
+                label="Asset Tag"
+                bg-color="white"
+                square
+                dense
+              >
               </q-input>
               <q-input
-                class="col-6 q-pa-xs"
+                class="col-3 q-pa-xs"
                 v-model="assets.assetDescription"
                 label="Asset Description"
                 bg-color="white"
@@ -92,8 +111,8 @@
               <q-select
                 class="col-3 q-pa-xs"
                 outlined
-                v-model="model"
-                :options="options"
+                v-model="assets.branchCode"
+                :options="useAssets.bankBranches.map(foo=>foo.branchCode)"
                 label="Branch"
                 bg-color="white"
                 square
@@ -114,8 +133,8 @@
               <q-select
                 class="col-3 q-pa-xs"
                 outlined
-                v-model="model"
-                :options="location"
+                v-model="assets.locationId"
+                :options="useAssets.assetLocations.map(foo=>foo.locationId)"
                 label="Location"
                 bg-color="white"
                 square
@@ -232,59 +251,20 @@
                   </q-icon>
                 </template>
               </q-input>
-              <!-- <q-input
+              <q-input
+               style="height:55px"
                 class="col-3 q-pa-xs"
                 autogrow
-                type="month"
                 label="Depriciation Month"
                 v-model="assets.depreciationMonths"
                 bg-color="white"
                 square
                 dense
               >
-              </q-input> -->
-              <q-input
-                class="col-3 q-pa-xs"
-                bg-color="white"
-                label="Depriciation Month"
-                square
-                v-model="assets.depreciationMonths"
-                mask="####-##-##"
-                :rules="['####-##-##']"
-              >
-                <template v-slot:append>
-                  <q-icon name="event" class="cursor-pointer">
-                    <q-popup-proxy
-                      cover
-                      transition-show="scale"
-                      transition-hide="scale"
-                    >
-                      <q-date v-model="assets.depreciationMonths">
-                        <div class="row items-center justify-end">
-                          <q-btn
-                            v-close-popup
-                            label="Close"
-                            color="primary"
-                            flat
-                          ></q-btn>
-                        </div>
-                      </q-date>
-                    </q-popup-proxy>
-                  </q-icon>
-                </template>
               </q-input>
-              <!-- <q-input
-                class="col-3 q-pa-xs"
-                autogrow
-                label="Last Depriciation Month"
-                v-model="assets.lastDepreciationMonth"
-                bg-color="white"
-                square
-                dense
-              >
-              </q-input> -->
               <q-input
                 class="col-3 q-pa-xs"
+                disabled
                 bg-color="white"
                 label="Last Depriciation Month"
                 square
@@ -356,7 +336,7 @@
           </q-bar>
           <q-card-section class="q-pt-none q-mt-md">
             <div class="row q-col-gutter-xs">
-              <q-input
+              <!-- <q-input
                 class="col-3 q-pa-xs"
                 label="Category Id"
                 v-model="category.assetCategoryId"
@@ -364,7 +344,7 @@
                 square
                 dense
               >
-              </q-input>
+              </q-input> -->
               <q-input
                 class="col-3 q-pa-xs"
                 v-model="category.categoryName"
@@ -447,146 +427,13 @@
         </q-card>
       </q-dialog>
       <!-- end -->
-
-      <!-- Create Branch -->
-      <q-dialog
-        v-model="AddBranch"
-        persistent
-        transition-show="flip-down"
-        transition-hide="flip-up"
-      >
-        <q-card
-          style="max-width: 1500px; width: 1000px; height: 700px"
-          class="bg-primary text-white"
-        >
-          <q-bar style="height: 50px">
-            <q-icon style="font-size: 30px" name="house_siding" />
-            <div>Add Branch</div>
-            <q-space />
-            <q-btn dense flat icon="close" v-close-popup>
-              <q-tooltip class="bg-white text-primary">Close</q-tooltip>
-            </q-btn>
-          </q-bar>
-          <q-card-section class="q-pt-none q-mt-md">
-            <div class="row q-col-gutter-xs">
-              <q-input
-                class="col-4 q-pa-xs"
-                label="Branch Code"
-                v-model="branch.branchCode"
-                bg-color="white"
-                square
-                dense
-              >
-              </q-input>
-              <q-input
-                class="col-4 q-pa-xs"
-                v-model="branch.branchName"
-                label="Branch Name"
-                bg-color="white"
-                square
-                dense
-              >
-              </q-input>
-              <q-input
-                class="col-4 q-pa-xs"
-                v-model="branch.createdBy"
-                label="Created By"
-                bg-color="white"
-                square
-                dense
-              >
-              </q-input>
-            </div>
-            <div class="row q-col-gutter-xs q-mt-md">
-              <q-space />
-              <q-btn
-                class="col-1 q-pa-xs q-mr-md"
-                color="white"
-                text-color="black"
-                label="Clear"
-              />
-              <q-btn
-                class="col-1 q-pa-xs"
-                @click="saveAsset"
-                color="default"
-                label="Save"
-              />
-            </div>
-          </q-card-section>
-          <q-separator class="q-mt-md q-mb-md"></q-separator>
-          <BranchesTable />
-        </q-card>
-      </q-dialog>
-      <!-- end -->
-
-      <!-- Create Location -->
-      <q-dialog
-        v-model="AddLocation"
-        persistent
-        transition-show="flip-down"
-        transition-hide="flip-up"
-      >
-        <q-card
-         style="max-width: 1500px; width: 1000px; height: 700px"
-          class="bg-primary text-white"
-        >
-          <q-bar style="height: 50px">
-            <q-icon style="font-size: 30px" name="location_on" />
-            <div>Add Location</div>
-            <q-space />
-            <q-btn dense flat icon="close" v-close-popup>
-              <q-tooltip class="bg-white text-primary">Close</q-tooltip>
-            </q-btn>
-          </q-bar>
-          <q-card-section class="q-pt-none q-mt-md">
-            <div class="row q-col-gutter-xs">
-              <q-input
-                class="col-6 q-pa-xs"
-                label="Branch Code"
-                v-model="newlocation.description"
-                bg-color="white"
-                square
-                dense
-              >
-              </q-input>
-              <q-input
-                class="col-6 q-pa-xs"
-                v-model="newlocation.createdBy"
-                label="Branch Name"
-                bg-color="white"
-                square
-                dense
-              >
-              </q-input>
-            </div>
-            <div class="row q-col-gutter-xs q-mt-md">
-              <q-space />
-              <q-btn
-                class="col-2 q-pa-xs q-mr-md"
-                color="white"
-                text-color="black"
-                label="Clear"
-              />
-              <q-btn
-                class="col-2 q-pa-xs"
-                @click="saveAsset"
-                color="default"
-                label="Save"
-              />
-            </div>
-          </q-card-section>
-          <q-separator class="q-mt-md q-mb-md"></q-separator>
-          <LocationsTable />
-        </q-card>
-      </q-dialog>
-      <!-- end -->
     </div>
   </q-page>
 </template>
 
-<script>
+<script setup>
 import { defineComponent } from "vue";
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted,computed } from "vue";
 import monthpicker from "quasar-monthpicker";
 
 import AssetsTable from "src/components/AssetsTable.vue";
@@ -597,28 +444,9 @@ import LocationsTable from "src/components/LocationsTable.vue";
 
 // store registration
 import { useAssetstore } from "stores/assets";
+const useAssets = useAssetstore();
 
-export default defineComponent({
-  name: "IndexPage",
-
-  components: {
-    AssetsTable,
-    monthpicker,
-    AssetCategoriesTable,
-    NewAssetsTable,
-    BranchesTable,
-    LocationsTable,
-  },
-
-  setup() {
-    const useAssets = useAssetstore();
-
-    // onMount
-    useAssets.fetchAsset();
-    useAssets.assetCategory();
-    useAssets.listBankBranches();
-    useAssets.fetchAssetLocation();
-    const category = reactive({
+    const category  = reactive({
       assetCategoryId: "",
       categoryName: " ",
       description: " ",
@@ -628,7 +456,7 @@ export default defineComponent({
       createdBy: " ",
     });
 
-    const newlocation = reactive({
+      const newlocation = reactive({
       description: "",
       createdBy: "",
     });
@@ -649,38 +477,34 @@ export default defineComponent({
       acquisitionCost: "",
       acquisitionDetails: "",
       initialDepreciationMonth: "2020-02-01",
-      depreciationMonths: "2020-02-01",
+      depreciationMonths: "",
       lastDepreciationMonth: "2020-02-01",
-      createdBy: "danny daniel",
-      InventoryNumber: "BOAU00001",
+      createdBy: "Ivan",
+      InventoryNumber: "",
     });
 
+    const  AddAssets= ref(false)
+    const  AddAssetsCategory= ref(false)
+    const  AddBranch= ref(false)
+    const   AddLocation= ref(false)
+
     // methods
+    onMounted(() => {
+    useAssets.fetchAsset();
+    useAssets.assetCategory();
+    useAssets.listBankBranches();
+    useAssets.fetchAssetLocation();
+    });
+
+    const lastDepriciationMonth = computed(() => {
+  return `${assets.initialDepreciationMonth}, ${assets.depreciationMonths}` 
+})
+
     const saveAsset = async () => {
-      console.log("Assets", assets);
-      // await useAssets.createAsset(assets);
+      await useAssets.createAsset(assets);
     };
-    return {
-      model: ref("2019-02-22 21:02"),
-      AddAssets: ref(false),
-      AddAssetsCategory: ref(false),
-      AddBranch: ref(false),
-      AddLocation: ref(false),
-      saveAsset,
-      assets,
-      category,
-      branch,
-      newlocation,
-
-      model: ref(null),
-      options: ["Kampala", "Jinja", "Gulu", "Arua", "Mbale"],
-      location: ["Kampala", "Jinja", "Gulu", "Arua", "Mbale"],
-
-      useAssets,
-    };
-  },
-});
 </script>
+
 <style scoped>
 .bg-primary {
   background: #459755 !important;

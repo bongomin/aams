@@ -165,7 +165,7 @@
           <q-card-section class="q-pt-none q-mt-md">
             <div class="row q-col-gutter-xs">
               <q-input
-                class="col-4 q-pa-xs"
+                class="col-6 q-pa-xs"
                 label="Branch Code"
                 v-model="branch.branchCode"
                 bg-color="white"
@@ -174,7 +174,7 @@
               >
               </q-input>
               <q-input
-                class="col-4 q-pa-xs"
+                class="col-6 q-pa-xs"
                 v-model="branch.branchName"
                 label="Branch Name"
                 bg-color="white"
@@ -182,7 +182,7 @@
                 dense
               >
               </q-input>
-              <q-input
+              <!-- <q-input
                 class="col-4 q-pa-xs"
                 v-model="branch.createdBy"
                 label="Created By"
@@ -190,7 +190,7 @@
                 square
                 dense
               >
-              </q-input>
+              </q-input> -->
             </div>
             <div class="row q-col-gutter-xs q-mt-md">
               <q-space />
@@ -202,7 +202,7 @@
               />
               <q-btn
                 class="col-1 q-pa-xs"
-                @click="saveAsset"
+                @click="saveBranchData"
                 color="default"
                 label="Save"
               />
@@ -236,18 +236,9 @@
           <q-card-section class="q-pt-none q-mt-md">
             <div class="row q-col-gutter-xs">
               <q-input
-                class="col-6 q-pa-xs"
-                label="Branch Code"
+                class="col-12 q-pa-xs"
                 v-model="newlocation.description"
-                bg-color="white"
-                square
-                dense
-              >
-              </q-input>
-              <q-input
-                class="col-6 q-pa-xs"
-                v-model="newlocation.createdBy"
-                label="Branch Name"
+                label="Location Name"
                 bg-color="white"
                 square
                 dense
@@ -264,7 +255,7 @@
               />
               <q-btn
                 class="col-2 q-pa-xs"
-                @click="saveAsset"
+                @click="saveLocation"
                 color="default"
                 label="Save"
               />
@@ -325,13 +316,13 @@ export default defineComponent({
 
     const newlocation = reactive({
       description: "",
-      createdBy: "",
+      createdBy: "System",
     });
 
     const branch = reactive({
       branchCode: "",
       branchName: "",
-      createdBy: "",
+      createdBy: "System",
     });
 
     const assets = reactive({
@@ -351,21 +342,28 @@ export default defineComponent({
     });
 
     // methods
-    const saveAsset = async () => {
-      console.log("Assets", assets);
-      // await useAssets.createAsset(assets);
+    const saveLocation = async () => {
+      await useAssets.createNewLocation(newlocation);
     };
+
+    const saveBranchData = async () => {
+      console.log('Branch here',branch)
+      await useAssets.createNewBranch(branch)
+    };
+  
     return {
       model: ref("2019-02-22 21:02"),
       AddAssets: ref(false),
       AddAssetsCategory: ref(false),
       AddBranch: ref(false),
       AddLocation: ref(false),
-      saveAsset,
       assets,
       category,
       branch,
       newlocation,
+      saveLocation,
+      saveBranchData,
+      
 
       model: ref(null),
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],

@@ -20,6 +20,14 @@ export async function postAssets(assets) {
   return request(`/Assets/AddNewAsset`, methods.POST, assets);
 }
 
+export async function postLocation(location) {
+  return request(`/System/AddLocation`, methods.POST, location);
+}
+
+export async function postBranch(branch) {
+  return request(`/System/AddBranch`, methods.POST, branch);
+}
+
 export async function updateAsset(assetId) {
   return request(`/UpdateAsset/${assetId}`, methods.PATCH, careerGoal);
 }
