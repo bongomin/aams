@@ -252,7 +252,6 @@
                 </template>
               </q-input>
               <q-input
-               style="height:55px"
                 class="col-3 q-pa-xs"
                 autogrow
                 label="Depriciation Month"
@@ -374,8 +373,6 @@
                 dense
               >
               </q-input>
-            </div>
-            <div class="row q-col-gutter-xs">
               <q-input
                 label="Effective Life in Months"
                 class="col-3 q-pa-xs"
@@ -386,6 +383,9 @@
                 dense
               >
               </q-input>
+            </div>
+            <div class="row q-col-gutter-xs">
+              
               <q-input
                 class="col-3 q-pa-xs"
                 autogrow
